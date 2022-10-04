@@ -1,0 +1,101 @@
+{% extends 'account/bases.html' %} {%block content%}
+<main>
+  <div class="layout">
+    <!-- Start of Sign Up -->
+    <div class="main order-md-2">
+      <div class="start">
+        <div class="container">
+          <div class="col-md-12">
+            <div class="content">
+              {% if form.errors %}
+              <div class="card w-100">
+                <div class="card-body">
+                  <div class="card-text p-0 p-md-0">
+                    {% if form.errors.username %}
+                    <div style="color: red">{{form.errors.username}}</div>
+                    {% endif %} {% if form.errors.email %}
+                    <div style="color: red">{{form.errors.email}}</div>
+                    {% endif %} {% if form.errors.password1 %}
+                    <div style="color: red">{{form.errors.password1}}</div>
+                    {% endif %} {% if form.errors.password2 %}
+                    <div style="color: red">{{form.errors.password2}}</div>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+              {% endif %}
+              <h1>Create Account</h1>
+              <div class="third-party">
+                <button class="btn item bg-blue">
+                  <i class="material-icons">pages</i>
+                </button>
+                <button class="btn item bg-teal">
+                  <i class="material-icons">party_mode</i>
+                </button>
+                <button class="btn item bg-purple">
+                  <i class="material-icons">whatshot</i>
+                </button>
+              </div>
+              <p>or use your email for registration:</p>
+              <form class="signup" action="" method="post">
+                {% csrf_token%}
+                <div class="form-parent">
+                  <div class="form-group">
+                    {{form.username}}
+                    <button class="btn icon">
+                      <i class="material-icons">person_outline</i>
+                    </button>
+                  </div>
+                  <div class="form-group">
+                    {{form.email}}
+                    <button class="btn icon">
+                      <i class="material-icons">mail_outline</i>
+                    </button>
+                  </div>
+                </div>
+                <div class="form-group">
+                  {{form.password1}}
+                  <button class="btn icon">
+                    <i class="material-icons">lock_outline</i>
+                  </button>
+                </div>
+                <div class="form-group">
+                  {{form.password2}}
+                  <button class="btn icon">
+                    <i class="material-icons">lock_outline</i>
+                  </button>
+                </div>
+                <button type="submit" class="btn button">Sign Up</button>
+                <div class="callout">
+                  <span
+                    >Already a member?
+                    <a href="{% url 'loginpage' %}">Sign In</a></span
+                  >
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End of Sign Up -->
+    <!-- Start of Sidebar -->
+    <div class="aside order-md-1">
+      <div class="container">
+        <div class="col-md-12">
+          <div class="preference">
+            <h2>Welcome Back!</h2>
+            <p>
+              To keep connected with your friends please login with your
+              personal info.
+            </p>
+            <a href="{% url 'loginpage' %}" class="btn button">Sign In</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End of Sidebar -->
+  </div>
+  <!-- Layout -->
+</main>
+{% endblock content%}
